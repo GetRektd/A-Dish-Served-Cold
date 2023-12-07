@@ -37,6 +37,15 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * fowardInput);
         
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+       {
+        // Attack with sword
+        animator.SetTrigger("Attack");
+       }
+
     }
+
+    
     
 }
