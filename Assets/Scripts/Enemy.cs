@@ -21,5 +21,6 @@ public class Enemy : MonoBehaviour
        - transform.position).normalized;
        enemyRb.AddForce(lookDirection * 0.5f); 
 
+       
     }
 }
