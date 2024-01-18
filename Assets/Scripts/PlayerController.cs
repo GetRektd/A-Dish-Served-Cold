@@ -40,10 +40,31 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
        {
+
         // Attack with sword
-        animator.SetTrigger("Attack");
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2.5f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if(hitCollider.gameObject.tag == "Enemy")
+            {
+                Enemy enemyscript = hitCollider.gameObject.GetComponent<Enemy>();
+                if(enemyscript != null)
+                {
+                     enemyscript.ChangeHealth(-1);
+                }
+            }
+        }
+
+            animator.SetTrigger("Attack");
        }
 
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, 2.5f);
     }
 
     
